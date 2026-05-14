@@ -1,0 +1,19 @@
+- name: installing docker 
+  hosts: slave
+  become: true
+
+  tasks:
+    - name: install docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: start and enable docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+    - name: install maven
+      apt:
+        name: maven
+        state: present
