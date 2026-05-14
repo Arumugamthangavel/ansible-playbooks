@@ -1,0 +1,20 @@
+- name: installing tomcat in tomcat machine
+  hosts: slave
+  become: true
+
+  tasks:
+
+    - name: install tomcat
+      apt:
+        name: tomcat10
+        state: present
+    - name: install tomcat-admin
+      apt:
+        name: tomcat10-admin
+        state: present
+
+    - name: start and enable tomcat
+      service:
+        name: tomcat10
+        state: started
+        enabled: yes
